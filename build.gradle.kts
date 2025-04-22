@@ -23,17 +23,7 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.8.3"
 }
 
-tasks.test {
+tasks.named("test") {
     systemProperty("junit.jupiter.testinstance.lifecycle.default", "per_class")
-    finalizedBy(tasks.koverXmlReport, tasks.koverHtmlReport)
-}
-
-tasks.koverHtmlReport {
-    enabled = true
-    dependsOn(tasks.test)
-}
-
-tasks.koverXmlReport {
-    enabled = true
-    dependsOn(tasks.test)
+    finalizedBy("koverHtmlReport", "koverXmlReport")
 }
