@@ -20,7 +20,6 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.compose.compiler)
-    id("org.jetbrains.kotlinx.kover") version "0.7.6"
 }
 
 android {
@@ -196,8 +195,4 @@ dependencies {
     // AndroidX Test - Hilt testing
     androidTestImplementation(libs.hilt.android.testing)
     kspAndroidTest(libs.hilt.compiler)
-}
-
-tasks.named("test") {
-    finalizedBy("koverHtmlReport", "koverXmlReport")
 }
