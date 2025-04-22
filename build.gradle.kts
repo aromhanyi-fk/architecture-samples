@@ -24,6 +24,5 @@ plugins {
 }
 
 tasks.named("test") {
-    systemProperty("junit.jupiter.testinstance.lifecycle.default", "per_class")
     finalizedBy("koverHtmlReport", "koverXmlReport")
 }
