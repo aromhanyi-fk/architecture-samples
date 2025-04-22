@@ -26,7 +26,6 @@ plugins {
 tasks.test {
     systemProperty("junit.jupiter.testinstance.lifecycle.default", "per_class")
     finalizedBy(tasks.koverXmlReport, tasks.koverHtmlReport)
-    testLogging.showStandardStreams = true
 }
 
 tasks.koverHtmlReport {
