@@ -22,3 +22,19 @@ plugins {
     alias(libs.plugins.compose.compiler) apply false
     id("org.jetbrains.kotlinx.kover") version "0.8.3"
 }
+
+tasks.test {
+    systemProperty("junit.jupiter.testinstance.lifecycle.default", "per_class")
+    finalizedBy(tasks.koverXmlReport, tasks.koverHtmlReport)
+    testLogging.showStandardStreams = true
+}
+
+tasks.koverHtmlReport {
+    enabled = true
+    dependsOn(tasks.test)
+}
+
+tasks.koverXmlReport {
+    enabled = true
+    dependsOn(tasks.test)
+}
